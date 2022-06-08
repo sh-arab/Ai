@@ -1,6 +1,7 @@
 package Models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Questien {
 
@@ -14,7 +15,8 @@ public class Questien {
     }
 
     public void addAnswer(String answer){
-        answers.add(answer);
+        if (!answers.contains(answer))
+           answers.add(answer);
     }
 
     public String getRandomAnswer(int random){
@@ -26,6 +28,11 @@ public class Questien {
     }
 
     public String[] write(){
-        return new String[]{questien + answers.toArray()};
+        String [] arr=new String[answers.size()+1];
+        arr[0]=questien;
+        for (int i = 1; i < answers.size()+1; i++) {
+            arr[i]=answers.get(i-1);
+        }
+        return arr;
     }
 }

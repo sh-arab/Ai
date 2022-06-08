@@ -1,5 +1,7 @@
 package File;
 
+import Models.ChatBatData;
+import Models.Questien;
 import com.opencsv.CSVWriter;
 
 import java.io.FileWriter;
@@ -12,20 +14,11 @@ public class WriteFile {
         //Instantiating the CSVWriter class
         CSVWriter writer = new CSVWriter(new FileWriter("data.csv"));
 
-        //Writing data to a csv file
-        String line1[] = {"hi", "hello"};
-        String line2[] = {"1", "Krishna"};
-        String line3[] = {"2", "Vishnu"};
-        String line4[] = {"3", "Raja"};
+        for (Questien questien:ChatBatData.questiens)
+            writer.writeNext(questien.write());
 
-        //Writing data to the csv file
-        writer.writeNext(line1);
-        writer.writeNext(line2);
-        writer.writeNext(line3);
-        writer.writeNext(line4);
 
         //Flushing data from writer to file
         writer.flush();
-        System.out.println("Data entered");
     }
 }
