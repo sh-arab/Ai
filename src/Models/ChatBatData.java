@@ -38,7 +38,11 @@ public class ChatBatData {
        if (questien!=null)
            return questien.getRandomAnswer(random.nextInt(questien.answers.size()));
 
-       return "میشه یه بار دیگه سوالتو بپرسی متوجه نشدم";
+       questien=Cosine.checkCosine(questienWord);
 
+       if (questien!=null)
+           return questien.getRandomAnswer(random.nextInt(questien.answers.size()));
+
+       return "میشه یه بار دیگه سوالتو بپرسی متوجه نشدم";
    }
 }
